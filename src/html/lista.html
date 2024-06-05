@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="pt-Br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/styleList.css">
+    <title>Lista de Itens</title>
+</head>
+
+<body>
+
+
+    <section>
+        <h1>Escolha seu item e infome a quantidade quando pedir</h1>
+    </section>
+
+    <section class="principal">
+
+    
+    <div class="scrollable-div">
+        <label class="checkbox-item">
+            <input type="checkbox" value="garrafa"> Garrafa de café – Preta
+        </label>
+        <label class="checkbox-item">
+            <input type="checkbox" value="cuscuzeira"> Cuscuzeira – Grande
+        </label>
+
+        <label class="checkbox-item">
+            <input type="checkbox" value="sanduicheira">Sanduicheira – Preta 
+        </label>
+        <label class="checkbox-item">
+            <input type="checkbox" value="sobremesa"> Jogo de sobremesa
+        </label>
+        <label class="checkbox-item">
+            <input type="checkbox" value=" cortina"> Cortina cor ao seu critério
+        </label>
+        <label class="checkbox-item">
+            <input type="checkbox" value="pano_de_mesa"> Pano de mesa – cor ao seu critério
+        </label>
+        <label class="checkbox-item">
+            <input type="checkbox" value="tapete"> Tapete – cor ao seu critério
+        </label>
+        <label class="checkbox-item">
+            <input type="checkbox" value="pano_de_prato"> Pano de prato
+        </label>
+        <label class="checkbox-item">
+            <input type="checkbox" value="faqueiro"> Faqueiro – preto 
+            <input type="number" min="1" max="2">
+        </label>
+        <label class="checkbox-item">
+            <input type="checkbox" value="jogo_de_panela"> Jogo de panela
+        </label>
+        <label class="checkbox-item">
+            <input type="checkbox" value="jogo_faca_g"> Jogo de faca grande
+        </label>
+        <label class="checkbox-item">
+            <input type="checkbox" value="taca_vinho"> Jogo de taça vinho
+        </label>
+        <label class="checkbox-item">
+            <input type="checkbox" value="taca"> Jogo de taça
+        </label>
+        <label class="checkbox-item">
+            <input type="checkbox" value="copos"> Jogo de copo 
+            <input type="number" min="1" max="3">
+        </label>
+        <label class="checkbox-item">
+            <input type="checkbox" value="prato_f"> Prato fundo 
+            <input type="number" min="1" max="2">
+        </label>
+        <label class="checkbox-item">
+            <input type="checkbox" value="travessa"> Travessa 
+            <input type="number" min="1" max="3">
+        </label>
+        <label class="checkbox-item">
+            <input type="checkbox" value="xicara"> Jogo de xícara de café
+        </label>
+        <label class="checkbox-item">
+            <input type="checkbox" value="louca"> Jogo de louça
+        </label>
+        <label class="checkbox-item">
+            <input type="checkbox" value="pote_t"> Jogo de pote de tempero - vidro
+        </label>
+        <label class="checkbox-item">
+            <input type="checkbox" value="mantimentos"> Jogo de guarda mantimentos
+        </label>
+        <label class="checkbox-item">
+            <input type="checkbox" value="lencol"> Jogo de lençol casal cama normal
+        </label>
+        <label class="checkbox-item">
+            <input type="checkbox" value="ferro_p"> Ferro de passar roupa
+        </label>
+        <label class="checkbox-item">
+            <input type="checkbox" value="cobre_leito"> Kit cobre leito
+        </label>
+        <label class="checkbox-item">
+            <input type="checkbox" value="edredom"> Edredom
+        </label>
+        <label class="checkbox-item">
+            <input type="checkbox" value="jarra"> Jarra
+        </label>
+        <label class="checkbox-item">
+            <input type="checkbox" value="travesseiro"> Travesseiro 
+            <input type="number" min="1" max="2">
+        </label>
+        <label class="checkbox-item">
+            <input type="checkbox" value="toalha_b"> Jogo de toalha de banho
+            <input type="number" min="1" max="2">
+        </label>
+        
+        <label class="checkbox-item">
+            <input type="checkbox" value="frigideira"> Frigideira
+        </label>
+        <label class="checkbox-item">
+            <input type="checkbox" value="panela_pressao"> Panela de pressão
+        </label>
+        <label class="checkbox-item">
+            <input type="checkbox" value=" jogo_americano"> Jogo americano,
+        </label>
+        <label class="checkbox-item">
+            <input type="checkbox" value="colheres"> Jogo de colheres para servir
+        </label>
+        <label class="checkbox-item">
+            <input type="checkbox" value="Tabua_f"> Tábua de frios
+        </label>
+       
+    </div>
+
+    <div class="enviar">
+    <button  id="submit-button">Enviar</button>
+
+</div>
+</section>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const submitButton = document.getElementById('submit-button');
+            const options = document.querySelectorAll('.options input[type="radio"]');
+
+            submitButton.addEventListener('click', function() {
+                const selectedOption = document.querySelector('.options input[type="radio"]:checked');
+
+                if (selectedOption) {
+                    // Aqui você pode adicionar a lógica para enviar a opção selecionada
+                    // para o servidor ou fazer qualquer outra ação necessária.
+                    console.log('Opção selecionada:', selectedOption.value);
+
+                    // Desabilita a opção selecionada para outros usuários
+                    selectedOption.disabled = true;
+                } else {
+                    console.log('Nenhuma opção selecionada.');
+                }
+            });
+        });
+    </script>
+
+  
+
+</body>
+
+</html>

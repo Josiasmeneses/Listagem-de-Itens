@@ -1,0 +1,105 @@
+* {
+    padding: 0;
+    margin: 0;
+    justify-content: center;
+    background-color: #1c1c1c;
+  
+}
+
+section{
+    
+    background-repeat: no-repeat;
+    justify-content: center;
+    
+}
+
+@media(max-width:1050px ){
+    section{
+        background-size: 1100px;
+        
+    }
+}
+
+@media(min-width: 2065px){
+    section{
+      background-size: 450px;
+    }
+}
+
+@media(max-width:500px){
+    section{
+        background-color: #ccc;
+
+    }
+
+    
+    .scrollable-div,div{
+    
+        max-height: 100px; /* Altura máxima da div */
+
+      
+        padding: 10px;
+    }
+    
+}
+h1{
+    text-align: center;
+    color:white;
+}
+
+section,
+.principal {
+    height: max-content;
+    display: flex;
+    position: relative;
+    justify-content: center;
+    flex-direction: column;
+   
+    
+}
+
+
+ul,li.listagem{
+
+    padding-top: 20px;
+}
+.listagem{
+    list-style: none;
+    list-style-position: inside;
+}
+
+
+
+
+.scrollable-div {
+    justify-content: center;
+    max-width: 400px;
+    max-height: 600px; /* Altura máxima da div */
+    overflow-y: auto; /* Adiciona a barra de rolagem vertical */
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+/* Estilo para os checkboxes */
+.checkbox-item {
+    display: block;
+    margin-bottom: 10px;
+   
+}
+
+
+
+div,label.checkbox-item{
+    text-align: justify;
+    color: white;
+    padding-left: 0.5em;
+    
+}
+
+
+
+.enviar{
+   
+    padding: 20px;
+    
+}
