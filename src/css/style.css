@@ -1,0 +1,103 @@
+* {
+   padding: 0;
+   margin: 0;
+   justify-content: center;
+   size: 100%;
+   max-height: max-content;
+   background-color: #fff6e7;
+ 
+
+}
+/* Card submit */
+section,
+.principal {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    flex-direction: column;
+    /* background-image: url("../../public/images/Fundo_lista.svg"); */
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url("../../public/images/fundo.jpg");
+}
+
+/* @media(max-width:2065px), (min-width:1300px){
+    section.principal{
+        background-size: cover;
+        
+    }
+} */
+
+@media (max-width:800px) ,(min-width:300px)
+{
+    section,.principal{
+        background-size: contain;
+    }
+}
+div,
+h1 {
+    display: flex;
+    justify-content: center;
+
+}
+
+.card,
+h1 {
+    padding: 15px;
+    background-color: transparent;
+    text-decoration: underline;
+}
+
+.card {
+   
+    background-repeat: no-repeat;
+    background-size: 100%;
+    display: flex;
+    width: 600px;
+    height: 900px;
+    border-radius: 20px;
+    flex-direction: column;
+
+}
+
+.principal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+
+}
+
+div,
+form,
+input,
+h3 {
+    color: rgb(241, 99, 99);
+    background-color: transparent;
+}
+
+div,
+input,
+h1,
+.forms {
+
+    padding: 5px;
+
+}
+
+.card,button {
+    display: flex;
+    align-items: center;
+    padding: 2px;
+    
+}
+
+button,
+#btn {
+    border-radius: 10px;
+    background-color: #757474;
+    color: aliceblue;
+    width: 100px;
+    height: 25px;
+}
+
