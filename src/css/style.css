@@ -1,13 +1,14 @@
 * {
-   padding: 0;
-   margin: 0;
-   justify-content: center;
-   size: 100%;
-   max-height: max-content;
-   background-color: #fff6e7;
- 
+    padding: 0;
+    margin: 0;
+    justify-content: center;
+    size: 100%;
+    max-height: max-content;
+    background-color: #fff6e7;
+
 
 }
+
 /* Card submit */
 section,
 .principal {
@@ -18,7 +19,7 @@ section,
     /* background-image: url("../../public/images/Fundo_lista.svg"); */
     background-repeat: no-repeat;
     background-size: cover;
-    background-image: url("../../public/images/fundo.jpg");
+    background-image: url("../../public/images/Fundo_lista.svg");
 }
 
 /* @media(max-width:2065px), (min-width:1300px){
@@ -28,12 +29,15 @@ section,
     }
 } */
 
-@media (max-width:800px) ,(min-width:300px)
-{
-    section,.principal{
+@media (max-width:800px),
+(min-width:300px) {
+
+    section,
+    .principal {
         background-size: contain;
     }
 }
+
 div,
 h1 {
     display: flex;
@@ -49,7 +53,7 @@ h1 {
 }
 
 .card {
-   
+
     background-repeat: no-repeat;
     background-size: 100%;
     display: flex;
@@ -85,11 +89,12 @@ h1,
 
 }
 
-.card,button {
+.card,
+button {
     display: flex;
     align-items: center;
     padding: 2px;
-    
+
 }
 
 button,
@@ -100,4 +105,3 @@ button,
     width: 100px;
     height: 25px;
 }
-

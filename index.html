@@ -4,24 +4,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="src/css/style.css">
     <title>Chárraia Da Kassia & Lucas</title>
 
 
 </head>
 
-<body >
+<body>
 
-    
+
 
     <section class="principal">
         <div class="card">
             <div class="forms">
                 <form id="form" action="">
                     <h1 style="text-align: center; align-items:center ;">Insira seu nome</h1>
-                        <input type="text" name="Nome" id="name"required>
+                    <input type="text" name="Nome" id="name" required>
 
-                    
+
                 </form>
             </div>
             <button id="btn" type="submit"> Enviar</button>
@@ -31,21 +31,21 @@
     </section>
 
 
-    
+
 
     <script>
-        document.getElementById('btn').addEventListener('click', function() {
-        var nome = document.getElementById('name').value;
-    
-        
-        // Armazenar dados no armazenamento local
-        localStorage.setItem('nome', nome);
-       
-      
-        // Redirecionar para outra página
-        window.location.href = 'lista.html';
-      });
-    
+        document.getElementById('btn').addEventListener('click', function () {
+            var nome = document.getElementById('name').value;
+
+
+            // Armazenar dados no armazenamento local
+            localStorage.setItem('nome', nome);
+
+
+            // Redirecionar para outra página
+            window.location.href = 'lista.html';
+        });
+
     </script>
 
 </body>
