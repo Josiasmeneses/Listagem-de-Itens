@@ -15,41 +15,58 @@
     </script> -->
 
     <script>
-        const itensEnviadosKey = 'itensEnviados';
+        const serverUrl = 'http://localhost:3000';
 
-        function obterItensEnviados() {
-            const itensEnviados = localStorage.getItem(itensEnviadosKey);
-            return itensEnviados ? JSON.parse(itensEnviados) : [];
+        async function obterItensEnviados() {
+            try {
+                const response = await fetch(`${serverUrl} / itens`);
+                const itensEnviados = await response.json();
+                return itensEnviados;
+            } catch (error) {
+                console.error('Erro ao obter itens enviados:', error);
+                return [];
+            }
         }
 
-        function salvarItensEnviados(itensEnviados) {
-            localStorage.setItem(itensEnviadosKey, JSON.stringify(itensEnviados));
+        async function salvarItensEnviados(itensEnviados) {
+            try {
+                await fetch(`${serverUrl} / itens, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(itensEnviados)
+                }`);
+            } catch (error) {
+                console.error('Erro ao salvar itens enviados:', error);
+            }
         }
 
-        function mostrarItensMarcados() {
+        async function mostrarItensMarcados() {
             const checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
             const itensMarcados = Array.from(checkboxes).map(checkbox => checkbox.nextElementSibling.textContent);
             alert(`Obaaa Agora so printar a tela pra não esquecer a: ${itensMarcados.join(', ')} Te vejo la!`);
 
             // Adiciona os itens marcados ao array de itens enviados e desabilita os checkboxes
-            const itensEnviados = obterItensEnviados();
+            const itensEnviados = await obterItensEnviados();
             itensMarcados.forEach(item => {
                 if (!itensEnviados.includes(item)) {
                     itensEnviados.push(item);
                 }
             });
-            salvarItensEnviados(itensEnviados);
+            await salvarItensEnviados(itensEnviados);
 
             atualizarCheckboxes();
         }
 
-        function atualizarCheckboxes() {
-            const itensEnviados = obterItensEnviados();
+        async function atualizarCheckboxes() {
+            const itensEnviados = await obterItensEnviados();
             const checkboxes = document.querySelectorAll('input[type="checkbox"]');
             checkboxes.forEach(checkbox => {
-                const itemLabel = checkbox.nextElementSibling.textContent;
-                if (itensEnviados.includes(itemLabel)) {
+                const itemLabel = checkbox.nextElementSibling;
+                if (itensEnviados.includes(itemLabel.textContent)) {
                     checkbox.disabled = true;
+                    itemLabel.classList.add('item-desabilitado');
                 }
             });
         }

@@ -8,6 +8,20 @@ body {
 
 }
 
+.item-desabilitado {
+    color: red;
+    text-decoration: line-through;
+    position: relative;
+}
+
+.item-desabilitado::after {
+    content: '✗';
+    color: red;
+    position: absolute;
+    right: -20px;
+    font-size: 20px;
+}
+
 @media (max-width:600px) {
     body {
         margin-top: 300px;
