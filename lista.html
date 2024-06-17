@@ -15,52 +15,36 @@
     </script> -->
 
     <script>
-        const serverUrl = 'http://localhost:3000';
+        const itensEnviadosKey = 'itensEnviados';
 
-        async function obterItensEnviados() {
-            try {
-                const response = await fetch(`${serverUrl} / itens`);
-                const itensEnviados = await response.json();
-                return itensEnviados;
-            } catch (error) {
-                console.error('Erro ao obter itens enviados:', error);
-                return [];
-            }
+        function obterItensEnviados() {
+            const itensEnviados = localStorage.getItem(itensEnviadosKey);
+            return itensEnviados ? JSON.parse(itensEnviados) : [];
         }
 
-        async function salvarItensEnviados(itensEnviados) {
-            try {
-                await fetch(`${serverUrl} / itens, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(itensEnviados)
-                }`);
-            } catch (error) {
-                console.error('Erro ao salvar itens enviados:', error);
-            }
+        function salvarItensEnviados(itensEnviados) {
+            localStorage.setItem(itensEnviadosKey, JSON.stringify(itensEnviados));
         }
 
-        async function mostrarItensMarcados() {
+        function mostrarItensMarcados() {
             const checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
             const itensMarcados = Array.from(checkboxes).map(checkbox => checkbox.nextElementSibling.textContent);
             alert(`Obaaa Agora so printar a tela pra não esquecer a: ${itensMarcados.join(', ')} Te vejo la!`);
 
             // Adiciona os itens marcados ao array de itens enviados e desabilita os checkboxes
-            const itensEnviados = await obterItensEnviados();
+            const itensEnviados = obterItensEnviados();
             itensMarcados.forEach(item => {
                 if (!itensEnviados.includes(item)) {
                     itensEnviados.push(item);
                 }
             });
-            await salvarItensEnviados(itensEnviados);
+            salvarItensEnviados(itensEnviados);
 
             atualizarCheckboxes();
         }
 
-        async function atualizarCheckboxes() {
-            const itensEnviados = await obterItensEnviados();
+        function atualizarCheckboxes() {
+            const itensEnviados = obterItensEnviados();
             const checkboxes = document.querySelectorAll('input[type="checkbox"]');
             checkboxes.forEach(checkbox => {
                 const itemLabel = checkbox.nextElementSibling;
@@ -70,6 +54,33 @@
                 }
             });
         }
+
+        // Função para inicializar o estado dos itens
+        function initItemState() {
+            // Verifica se já existe um estado salvo no localStorage
+            const savedState = JSON.parse(localStorage.getItem('itemState')) || {};
+
+            // Itera sobre cada checkbox
+            document.querySelectorAll('.select input[type="checkbox"]').forEach(checkbox => {
+                const itemId = checkbox.id;
+
+                // Se o item já foi selecionado (desabilitado), mantém desabilitado
+                if (savedState[itemId]) {
+                    checkbox.checked = true;
+                    checkbox.disabled = true;
+                }
+
+                // Adiciona um event listener para atualizar o estado quando um item é selecionado
+                checkbox.addEventListener('change', () => {
+                    savedState[itemId] = checkbox.checked;
+                    localStorage.setItem('itemState', JSON.stringify(savedState));
+                    checkbox.disabled = true; // Desabilita o item após seleção
+                });
+            });
+        }
+
+        // Chama a função quando a página carrega
+        window.onload = initItemState;
 
         window.onload = atualizarCheckboxes;
     </script>
