@@ -8,18 +8,19 @@ body {
 
 }
 
-.item-desabilitado {
+.selected-item {
     color: red;
     text-decoration: line-through;
     position: relative;
 }
 
-.item-desabilitado::after {
-    content: '✗';
+.selected-item::before {
+    content: 'X';
     color: red;
+    font-weight: bold;
     position: absolute;
-    right: -20px;
-    font-size: 20px;
+    left: -20px;
+    /* Adjust this value based on your layout */
 }
 
 @media (max-width:600px) {

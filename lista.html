@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="src/css/styleList.css">
+    <link rel="shortcut icon" href="public/images/fogueira.png" type="image/x-icon">
     <title>Lista de Itens</title>
     <!-- <script>
         function mostrarItensMarcados() {
@@ -15,16 +16,7 @@
     </script> -->
 
     <script>
-        const itensEnviadosKey = 'itensEnviados';
-
-        function obterItensEnviados() {
-            const itensEnviados = localStorage.getItem(itensEnviadosKey);
-            return itensEnviados ? JSON.parse(itensEnviados) : [];
-        }
-
-        function salvarItensEnviados(itensEnviados) {
-            localStorage.setItem(itensEnviadosKey, JSON.stringify(itensEnviados));
-        }
+        const itensEnviados = JSON.parse(localStorage.getItem('itensEnviados')) || [];
 
         function mostrarItensMarcados() {
             const checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
@@ -32,55 +24,27 @@
             alert(`Obaaa Agora so printar a tela pra não esquecer a: ${itensMarcados.join(', ')} Te vejo la!`);
 
             // Adiciona os itens marcados ao array de itens enviados e desabilita os checkboxes
-            const itensEnviados = obterItensEnviados();
             itensMarcados.forEach(item => {
                 if (!itensEnviados.includes(item)) {
                     itensEnviados.push(item);
                 }
             });
-            salvarItensEnviados(itensEnviados);
+
+            localStorage.setItem('itensEnviados', JSON.stringify(itensEnviados));
 
             atualizarCheckboxes();
         }
 
         function atualizarCheckboxes() {
-            const itensEnviados = obterItensEnviados();
             const checkboxes = document.querySelectorAll('input[type="checkbox"]');
             checkboxes.forEach(checkbox => {
-                const itemLabel = checkbox.nextElementSibling;
-                if (itensEnviados.includes(itemLabel.textContent)) {
+                const itemLabel = checkbox.nextElementSibling.textContent;
+                if (itensEnviados.includes(itemLabel)) {
                     checkbox.disabled = true;
-                    itemLabel.classList.add('item-desabilitado');
+                    checkbox.nextElementSibling.classList.add('selected-item');
                 }
             });
         }
-
-        // Função para inicializar o estado dos itens
-        function initItemState() {
-            // Verifica se já existe um estado salvo no localStorage
-            const savedState = JSON.parse(localStorage.getItem('itemState')) || {};
-
-            // Itera sobre cada checkbox
-            document.querySelectorAll('.select input[type="checkbox"]').forEach(checkbox => {
-                const itemId = checkbox.id;
-
-                // Se o item já foi selecionado (desabilitado), mantém desabilitado
-                if (savedState[itemId]) {
-                    checkbox.checked = true;
-                    checkbox.disabled = true;
-                }
-
-                // Adiciona um event listener para atualizar o estado quando um item é selecionado
-                checkbox.addEventListener('change', () => {
-                    savedState[itemId] = checkbox.checked;
-                    localStorage.setItem('itemState', JSON.stringify(savedState));
-                    checkbox.disabled = true; // Desabilita o item após seleção
-                });
-            });
-        }
-
-        // Chama a função quando a página carrega
-        window.onload = initItemState;
 
         window.onload = atualizarCheckboxes;
     </script>
@@ -273,6 +237,11 @@
             <div class="select">
                 <input type="checkbox" id="item36" name="item36">
                 <label for="item36">Fruteira</label>
+            </div>
+
+            <div class="select">
+                <input type="checkbox" id="item37" name="item37">
+                <label for="item37">Liquidificador</label>
             </div>
 
 
